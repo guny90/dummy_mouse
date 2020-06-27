@@ -10,14 +10,10 @@ public class Main {
 
 	public static final int DEF_PERIOD = 60;
 
-	static void moveWheel(int amt) throws AWTException {
-		Robot robot = new Robot();
-		robot.mouseWheel(amt);
-	}
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AWTException {
 
 		int period = DEF_PERIOD;
+		Robot robot = new Robot();
 
 		if (args.length > 0) {
 			period = Integer.parseInt(args[0]);
@@ -27,11 +23,7 @@ public class Main {
 
 		Runnable periodicTask = new Runnable() {
 			public void run() {
-				try {
-					moveWheel(1);
-				} catch (AWTException e) {
-					e.printStackTrace();
-				}
+				robot.mouseWheel(1);
 			}
 		};
 
